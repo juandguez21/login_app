@@ -33,7 +33,13 @@
   
   <script setup>
   import { ref } from "vue";
-  import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+  import { 
+    getAuth, 
+    signInWithEmailAndPassword,
+    GoogleAuthProvider, //se agrega cuando pongo autenticación con google
+    signInWithPopup //se agrega cuando pongo autenticación con google 
+
+  } from "firebase/auth";
   import { useRouter } from 'vue-router' // import router
   
   const email = ref("");
@@ -66,15 +72,22 @@
             errMsg.value = "Email or password was incorrect";
             break;
         }
-
-
-
         alert(error.message);
       });
   };
   
   const signInWithGoogle = () => {
     // Google sign in logic here
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(getAuth(), provider)
+    .then((result) => {
+      console.log(result.user);
+      router.push("/feed");
+    })
+    .catch((error) => {
+      //handle error
+      console.error(error);
+    })
   }
   </script>
   
