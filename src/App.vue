@@ -14,6 +14,7 @@
         <router-link to="/sign-in" class="nav-link" active-class="active">
           Login
         </router-link>
+        <button @click="handleSignOut" v-if="isLoggedIn">Sign out</button>
       </div>
     </nav>
     
@@ -54,15 +55,34 @@
   </div>
 </template>
 
-<script>
-import { RouterView } from 'vue-router';
+<script setup>
+import { onMounted, ref } from "vue";
+import { useRouter } from 'vue-router';
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
-export default {
-  name: 'App',
-  components: {
-    RouterView
-  }
-}
+const router = useRouter();
+const isLoggedIn = ref(false);
+
+let auth;
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedIn.value = true;
+    }else {
+      isLoggedIn.value = false;
+    }
+  });
+});
+
+const handleSignOut = () => {
+  signOut(auth).then(() => {
+    router.push("/");
+  });
+};
+
+
+
 </script>
 
 <style>
