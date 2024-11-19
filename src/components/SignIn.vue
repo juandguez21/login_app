@@ -82,7 +82,7 @@
     signInWithPopup(getAuth(), provider)
     .then((result) => {
       console.log(result.user);
-      router.push("/feed");
+      router.push("/products");
     })
     .catch((error) => {
       //handle error

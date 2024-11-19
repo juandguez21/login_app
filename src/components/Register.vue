@@ -40,10 +40,10 @@
   
   const email = ref("");
   const password = ref("");
-  const router = useRouter()
+  const router = useRouter();
   
   const register = () => {
-    const auth = getAuth();
+    const auth = getAuth()
     createUserWithEmailAndPassword(auth, email.value, password.value)
       .then(() => {
         console.log("Successfully registered!");
@@ -62,7 +62,7 @@
     signInWithPopup(getAuth(), provider)
     .then((result) => {
       console.log(result.user);
-      router.push("/feed");
+      router.push("/products");
     })
     .catch((error) => {
       //handle error

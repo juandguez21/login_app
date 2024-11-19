@@ -5,8 +5,14 @@
         <router-link to="/" class="nav-link" active-class="active">
           Home
         </router-link>
-        <router-link to="/feed" class="nav-link" active-class="active">
-          Feed
+        <router-link to="/products" class="nav-link" active-class="active">
+          Product List
+        </router-link>
+        <router-link to="/orders" class="nav-link" active-class="active">
+          Order List
+        </router-link>
+        <router-link to="/create-order" class="nav-link" active-class="active">
+          Create Order
         </router-link>
         <router-link to="/register" class="nav-link" active-class="active">
           Register
@@ -107,7 +113,7 @@ const handleSignOut = () => {
 }
 
 .navigation {
-  background-color: #ffffff;
+  background-color: #2c3e50;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   position: fixed;
@@ -126,7 +132,7 @@ const handleSignOut = () => {
 }
 
 .nav-link {
-  color: #666;
+  color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;

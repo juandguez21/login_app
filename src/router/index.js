@@ -8,12 +8,28 @@ const router = createRouter({
         { path: "/register", component: () => import("../components/Register.vue")},
         { path: "/sign-in", component: () => import("../components/SignIn.vue")},
         { 
-            path: "/feed", 
-            component: () => import("../components/Feed.vue"),
+            path: "/products", 
+            component: () => import("../components/ProductList.vue"),
             meta: {
                 requiresAuth: true,
             },
         },
+        { path: "/orders", component: () => import("../components/OrderList.vue"),
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        { path: "/create-order", component: () => import("../components/CreateOrder.vue"),
+            meta: {
+                requiresAuth: true,
+            },
+        },
+        {
+            path:"/edit-order/:id", component: () => import("../components/EditOrder.vue"),
+            meta: {
+                requiresAuth: true,
+            },
+        }
     ],
 });
 
